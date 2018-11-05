@@ -46,7 +46,8 @@ module.exports = {
 
 
     search: function (searchTerm) {
-        let url = 'https://geocloud.envirogissolutions.co.za/api/v2/elasticsearch/search/envirogis/public/farmpolys';
+        let rel = config.extensionConfig.farmpolysSearch.search;
+        let url = 'https://geocloud.envirogissolutions.co.za/api/v2/elasticsearch/search/envirogis/report/' + rel;
         let query = {
             "_source": {
                 "excludes": [
