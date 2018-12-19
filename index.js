@@ -56,11 +56,10 @@ module.exports = {
             },
             "size": 100,
             "query": {
-                "match": {
-                    "properties.farmname": {
-                        "query": searchTerm,
-                        "operator": "and"
-                    }
+                "multi_match": {
+                    "query": searchTerm,
+                    "fields": ["properties.farmname", "properties.sg_code", "properties.farm_no", "properties.portion"],
+                    "operator": "or"
                 }
             }
         };
@@ -88,7 +87,7 @@ module.exports = {
                             "dashArray": '5,3'
                         });
                         layerGroupAll.addLayer(layer).addTo(mapObj);
-                        return {'title': it.farmname, 'id': it.gid};
+                        return {'title': `${it.farmname}, ${it.sg_code}, ${it.farm_no}, ${it.portion}`, 'id': it.gid};
                     });
                     resolve(res);
                 },
@@ -148,6 +147,15 @@ module.exports = {
                         <ul className="list-group">
                             <li className="list-group-item">
                                 Name: {properties.farmname}
+                            </li>
+                            <li className="list-group-item">
+                                SG code: {properties.sg_code}
+                            </li>
+                            <li className="list-group-item">
+                                Form no: {properties.farm_no}
+                            </li>
+                            <li className="list-group-item">
+                                Portion: {properties.portion}
                             </li>
                             <li className="list-group-item">
                                 Town: {properties.town}
