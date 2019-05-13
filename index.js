@@ -58,7 +58,7 @@ module.exports = {
             "query": {
                 "multi_match": {
                     "query": searchTerm,
-                    "fields": ["properties.farmname", "properties.sg_code", "properties.farm_no", "properties.portion"],
+                    "fields": ["properties.farmname", "properties.sg_code", "properties.farm_no", "properties.portion", "properties.province"],
                     "operator": "or"
                 }
             }
