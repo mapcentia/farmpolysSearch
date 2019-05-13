@@ -87,7 +87,7 @@ module.exports = {
                             "dashArray": '5,3'
                         });
                         layerGroupAll.addLayer(layer).addTo(mapObj);
-                        return {'title': `${it.farmname}, ${it.sg_code}, ${it.farm_no}, ${it.portion}`, 'id': it.gid};
+                        return {'title': `${it.farmname}, ${it.sg_code}, ${it.farm_no}, ${it.portion}, ${it.province}`, 'id': it.gid};
                     });
                     resolve(res);
                 },
